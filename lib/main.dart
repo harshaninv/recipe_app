@@ -30,5 +30,5 @@ final ThemeData darkTheme = ThemeData(
 );
 
 void main() {
-  runApp(const RecipeAppScreen());
+  runApp(const RecipeApp());
 }
