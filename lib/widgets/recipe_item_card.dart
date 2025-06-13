@@ -4,21 +4,28 @@ import 'package:recipe_app/widgets/recipe_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class RecipeItemCard extends StatelessWidget {
-  const RecipeItemCard({super.key, required this.recipe});
+  const RecipeItemCard({
+    super.key,
+    required this.recipe,
+    required this.onTapRecipe,
+  });
 
   final Recipe recipe;
+  final void Function() onTapRecipe;
 
   @override
   Widget build(BuildContext context) {
+    int totalCookTime = recipe.cookTimeMinutes + recipe.prepTimeMinutes;
+
     return Card(
-      margin: EdgeInsets.all(8),
+      margin: EdgeInsets.all(4),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadiusGeometry.circular(8),
       ),
       clipBehavior: Clip.hardEdge,
       elevation: 2,
       child: InkWell(
-        // onTap: onTapMeal,
+        onTap: onTapRecipe,
         child: Stack(
           children: [
             Hero(
@@ -27,7 +34,6 @@ class RecipeItemCard extends StatelessWidget {
                 placeholder: MemoryImage(kTransparentImage),
                 image: NetworkImage(recipe.image),
                 fit: BoxFit.cover,
-                height: 200,
                 width: double.infinity,
               ),
             ),
@@ -36,8 +42,9 @@ class RecipeItemCard extends StatelessWidget {
               left: 0,
               right: 0,
               child: Container(
-                color: Colors.black54,
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 44),
+                color: const Color.fromARGB(162, 80, 71, 75),
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                margin: EdgeInsets.only(left: 80, bottom: 15),
                 child: Column(
                   children: [
                     Text(
@@ -47,27 +54,26 @@ class RecipeItemCard extends StatelessWidget {
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
-                        fontSize: 20,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
                       ),
                     ),
-                    const SizedBox(height: 13),
-                    Row(
+                    const SizedBox(height: 10),
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         RecipeItemTrait(
                           icon: Icons.timer,
-                          label: '${recipe.cookTimeMinutes} min',
+                          label: '$totalCookTime min',
                         ),
-                        const SizedBox(width: 20),
+                        const SizedBox(height: 5),
                         RecipeItemTrait(
                           icon: Icons.mood_rounded,
                           label: recipe.difficulty,
                         ),
-                        const SizedBox(width: 20),
+                        const SizedBox(height: 5),
                         RecipeItemTrait(
-                          icon: Icons.attach_money,
+                          icon: Icons.local_dining_outlined,
                           label: '${recipe.servings}',
                         ),
                       ],
