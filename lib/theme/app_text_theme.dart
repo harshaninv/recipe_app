@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:recipe_app/theme/color_theme.dart';
 
 class AppTextTheme {
   static TextTheme get textTheme => TextTheme(
@@ -17,10 +18,10 @@ class AppTextTheme {
     bodyMedium: GoogleFonts.nunito(
       fontSize: 14,
     ),
-    headlineMedium: GoogleFonts.merriweather(
-      fontWeight: FontWeight.normal,
+    headlineMedium: GoogleFonts.eduNswActFoundation(
+      fontWeight: FontWeight.normal
     ),
-    headlineLarge: GoogleFonts.merriweather(
+    headlineLarge: GoogleFonts.eduNswActFoundation(
       fontWeight: FontWeight.bold,
     ),
   );
