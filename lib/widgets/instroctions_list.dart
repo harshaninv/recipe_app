@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/theme/app_text_theme.dart';
-import 'package:recipe_app/theme/color_theme.dart';
 
 class InstroctionsList extends StatefulWidget {
   const InstroctionsList({super.key, required this.instructions});
