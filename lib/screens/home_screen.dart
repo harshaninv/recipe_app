@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/models/recipe.dart';
 import 'package:recipe_app/providers/recipe_provider.dart';
+import 'package:recipe_app/screens/recipe_detial.dart';
 import 'package:recipe_app/widgets/recipe_item_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,15 +13,28 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  
   @override
   void initState() {
-    Future.delayed(Duration.zero, () {
-      final recipeProvider = Provider.of<RecipeProvider>(context, listen: false);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final recipeProvider = Provider.of<RecipeProvider>(
+        context,
+        listen: false,
+      );
       if (recipeProvider.recipes.isEmpty) {
         recipeProvider.loadRecipes();
       }
     });
+
     super.initState();
+  }
+
+  void _selectMeal(BuildContext context, Recipe recipe) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (ctx) => RecipeDetialScreen(recipedetail: recipe),
+      ),
+    );
   }
 
   @override
@@ -32,11 +46,21 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(title: const Text('Food Recipes')),
       body: recipeProvider.isLoading
           ? const Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              itemCount: listOfRecipes.length,
-              itemBuilder: (context, index) {
-                return RecipeItemCard(recipe: listOfRecipes[index]);
-              },
+          : Padding(
+              padding: const EdgeInsets.only(top: 4.0),
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
+                itemCount: listOfRecipes.length,
+                itemBuilder: (context, index) {
+                  return RecipeItemCard(
+                    recipe: listOfRecipes[index],
+                    onTapRecipe: () =>
+                        _selectMeal(context, listOfRecipes[index]),
+                  );
+                },
+              ),
             ),
     );
   }

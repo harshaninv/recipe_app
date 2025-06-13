@@ -14,9 +14,9 @@ final ThemeData darkTheme = ThemeData(
     onSurface: ColorTheme.lightPink,
     onSecondary: Colors.black,
   ),
-  scaffoldBackgroundColor: ColorTheme.darkBrown,
+  scaffoldBackgroundColor: const Color.fromARGB(255, 58, 8, 30),
   appBarTheme: const AppBarTheme(
-    backgroundColor: ColorTheme.hotPink,
+    backgroundColor: Color.fromARGB(255, 134, 24, 62),
     foregroundColor: Colors.white,
     elevation: 0,
   ),
