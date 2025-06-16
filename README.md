@@ -1,10 +1,5 @@
 # recipe_app
-
-![recipe app image 1](https://github.com/user-attachments/assets/1ec1b9a2-b4bd-4a53-ad01-e91b73813502)
-![recipe app image 2](https://github.com/user-attachments/assets/711984e6-d46a-4ec7-9dfd-8fbbce7ae1c0)
-![recipe app image 3](https://github.com/user-attachments/assets/d29d3741-6d58-4718-b43d-411cf4b67132)
 ![recipe app image 4](https://github.com/user-attachments/assets/f1939769-732c-4fbb-aeca-d9febae74eb5)
-
 
 ## 🍽️ Recipe App – Flutter
 
