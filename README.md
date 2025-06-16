@@ -1,6 +1,31 @@
 # recipe_app
 
-A new Flutter project.
+🍽️ Recipe App – Flutter
+
+This is a simple Recipe App built using Flutter as part of a screening assignment for a Flutter Developer position at Future Code Technology.
+📱 Features:
+
+    Fetches a list of recipes using dummy API data
+
+    Displays a clean and responsive UI
+
+    Includes a detail screen for each recipe with more information
+
+    Uses basic state management with setState
+
+    Designed with user-friendly navigation and smooth interactions
+
+🛠️ Tech Stack:
+
+    Flutter
+
+    Dart
+
+    Dummy JSON API for data fetching
+
+🎯 Purpose:
+
+This app was developed to demonstrate skills in Flutter development, UI design, API handling, and state management as part of a technical assignment.
 
 ## Getting Started
 
