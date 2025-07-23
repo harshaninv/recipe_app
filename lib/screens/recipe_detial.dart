@@ -14,7 +14,13 @@ class RecipeDetialScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(recipedetail.name)),
+      appBar: AppBar(
+        title: Text(recipedetail.name), 
+        centerTitle: true,
+        titleTextStyle: AppTextTheme.textTheme.headlineLarge!.copyWith(
+          fontSize: 24,
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
