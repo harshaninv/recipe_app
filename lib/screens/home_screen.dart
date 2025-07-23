@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:recipe_app/models/recipe.dart';
 import 'package:recipe_app/providers/recipe_provider.dart';
 import 'package:recipe_app/screens/recipe_detial.dart';
+import 'package:recipe_app/widgets/custom_scaffold.dart';
 import 'package:recipe_app/widgets/recipe_item_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,7 +14,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -43,25 +43,32 @@ class _HomeScreenState extends State<HomeScreen> {
     final List<Recipe> listOfRecipes = recipeProvider.recipes;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Food Recipes')),
-      body: recipeProvider.isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : Padding(
-              padding: const EdgeInsets.only(top: 4.0),
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: const Text('Food Recipes'), 
+        centerTitle: true,
+        titleTextStyle: Theme.of(context).textTheme.headlineLarge,
+      ),
+      body: CustomScaffold(
+        child: recipeProvider.isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : Padding(
+                padding: const EdgeInsets.only(top: 4.0),
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                  ),
+                  itemCount: listOfRecipes.length,
+                  itemBuilder: (context, index) {
+                    return RecipeItemCard(
+                      recipe: listOfRecipes[index],
+                      onTapRecipe: () =>
+                          _selectMeal(context, listOfRecipes[index]),
+                    );
+                  },
                 ),
-                itemCount: listOfRecipes.length,
-                itemBuilder: (context, index) {
-                  return RecipeItemCard(
-                    recipe: listOfRecipes[index],
-                    onTapRecipe: () =>
-                        _selectMeal(context, listOfRecipes[index]),
-                  );
-                },
               ),
-            ),
+      ),
     );
   }
 }
