@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/screens/recipe_app.dart';
 import 'package:recipe_app/theme/color_theme.dart';
 import 'package:recipe_app/theme/app_text_theme.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 final ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
@@ -29,6 +30,8 @@ final ThemeData darkTheme = ThemeData(
   textTheme: AppTextTheme.textTheme,
 );
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const RecipeApp());
 }
