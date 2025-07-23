@@ -1,6 +1,27 @@
 # recipe_app
+<img src="https://github.com/user-attachments/assets/2527bb3e-92f3-46b6-a487-1e3be6f4c431" width="300"/>
+<img src="https://github.com/user-attachments/assets/f1939769-732c-4fbb-aeca-d9febae74eb5" width="300"/>
 
-A new Flutter project.
+## 🍽️ Recipe App – Flutter
+
+This is a simple Recipe App built using Flutter.
+📱 Features:
+
+- Fetches a list of recipes using dummy API data
+- Displays a clean and responsive UI
+- Includes a detail screen for each recipe with more information
+- Uses basic state management with setState
+- Designed with user-friendly navigation and smooth interactions
+
+🛠️ Tech Stack:
+
+- Flutter
+- Dart
+- Dummy JSON API for data fetching
+
+🎯 Purpose:
+
+This app was developed to demonstrate skills in Flutter development, UI design, API handling, and state management.
 
 ## Getting Started
 
