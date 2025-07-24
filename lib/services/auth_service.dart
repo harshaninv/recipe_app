@@ -13,20 +13,40 @@ class AuthService {
     required String email,
     required String password,
   }) async {
-    return await firebaseAuth.signInWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
+    try {
+      return await firebaseAuth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        throw 'No user found for that email.';
+      } else if (e.code == 'wrong-password') {
+        throw 'Wrong password provided for that user.';
+      } else {
+        throw 'An unknown error occurred: ${e.message}';
+      }
+    }
   }
 
   Future<UserCredential> createAccount({
     required String email,
     required String password,
   }) async {
-    return await firebaseAuth.createUserWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
+    try {
+      return await firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        throw 'The password provided is too weak.';
+      } else if (e.code == 'email-already-in-use') {
+        throw 'The account already exists for that email.';
+      } else {
+        throw 'An unknown error occurred: ${e.message}';
+      }
+    }
   }
 
   Future<void> signOut() async {
