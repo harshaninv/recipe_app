@@ -51,7 +51,10 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: CustomScaffold(
         child: recipeProvider.isLoading
-            ? const Center(child: CircularProgressIndicator())
+            ? const Align(
+              alignment: Alignment.topCenter,
+              child: LinearProgressIndicator(),
+            )
             : Padding(
                 padding: const EdgeInsets.only(top: 4.0),
                 child: GridView.builder(
