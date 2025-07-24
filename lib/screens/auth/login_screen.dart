@@ -4,6 +4,7 @@ import 'package:recipe_app/providers/auth_provider.dart';
 import 'package:recipe_app/theme/app_text_theme.dart';
 import 'package:recipe_app/widgets/custom_button.dart';
 import 'package:recipe_app/widgets/custom_scaffold.dart';
+import 'package:recipe_app/widgets/error_snackbar.dart';
 import 'package:recipe_app/widgets/input_field.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -40,12 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Login failed: \n${e.toString()}', style: TextStyle(color: Colors.white),),
-            backgroundColor: Colors.black,
-          ),
-        );
+        showCustomSnackBar(context, 'Login failed: ${e.toString()}');
       }
     } finally {
       setState(() {
