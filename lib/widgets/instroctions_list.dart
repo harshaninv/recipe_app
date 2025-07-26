@@ -26,18 +26,25 @@ class _InstroctionsListState extends State<InstroctionsList> {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        // return Text(ingredients[index]);
-        return CheckboxListTile(
-          value: _checkedInstructions[index],
-          onChanged: (value) {
-            setState(() {
-              _checkedInstructions[index] = value!;
-            });
-          },
-          title: Text('${index+1}). ${widget.instructions[index]}', style: AppTextTheme.textTheme.headlineMedium!.copyWith(
-            fontSize: 20,
-            fontWeight: FontWeight.normal
-          ),),
+        return Container(
+          margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
+          decoration: BoxDecoration(
+            color: Color.fromARGB(207, 63, 11, 29),
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          child: CheckboxListTile(
+            value: _checkedInstructions[index],
+            onChanged: (value) {
+              setState(() {
+                _checkedInstructions[index] = value!;
+              });
+            },
+            title: Text('${index+1}). ${widget.instructions[index]}', style: AppTextTheme.textTheme.headlineMedium!.copyWith(
+              fontSize: 24,
+              color: ColorScheme.of(context).secondary,
+              fontWeight: FontWeight.w500,
+            ),),
+          ),
         );
       },
     );
