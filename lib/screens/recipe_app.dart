@@ -6,21 +6,13 @@ import 'package:recipe_app/providers/recipe_provider.dart';
 import 'package:recipe_app/screens/auth/login_screen.dart';
 import 'package:recipe_app/screens/auth/signup_screen.dart';
 import 'package:recipe_app/screens/home_screen.dart';
+import 'package:recipe_app/widgets/auth_wrapper.dart';
 
 class RecipeApp extends StatelessWidget {
   const RecipeApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // return ChangeNotifierProvider(
-    //   create: (_) => RecipeProvider(),
-    //   child: MaterialApp(
-    //     title: 'Recipe Book',
-    //     debugShowCheckedModeBanner: false,
-    //     theme: darkTheme,
-    //     home: const HomeScreen(),
-    //   ),
-    // );
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => RecipeProvider()),
@@ -30,8 +22,7 @@ class RecipeApp extends StatelessWidget {
         title: 'Recipe Book',
         debugShowCheckedModeBanner: false,
         theme: darkTheme,
-        home: const LoginScreen(),
-        initialRoute: '/login',
+        home: const AuthWrapper(),
         routes: {
           '/login': (context) => LoginScreen(),
           '/signup': (context) => SignupScreen(),
