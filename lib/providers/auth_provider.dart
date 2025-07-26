@@ -63,5 +63,9 @@ class AuthProvider extends ChangeNotifier{
     );
   }
 
+  // get user profile data from auth service
+  Future<Map<String, dynamic>> getUserProfile() async {
+    return _authService.getCurrentUserDetails();
+  }
   
 }

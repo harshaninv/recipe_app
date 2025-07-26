@@ -7,8 +7,6 @@ class AuthService {
 
   User? get currentUser => firebaseAuth.currentUser;
 
-  // Stream<User?> get authStateChanges => firebaseAuth.authStateChanges();
-
   Future<UserCredential> signIn({
     required String email,
     required String password,
@@ -85,5 +83,19 @@ class AuthService {
     );
     await currentUser!.reauthenticateWithCredential(credential);
     await currentUser!.updatePassword(newPassword);
+  }
+
+  // get current user details
+  Map<String, dynamic> getCurrentUserDetails() {
+    if (currentUser != null) {
+      return {
+        'uid': currentUser!.uid,
+        'email': currentUser!.email,
+        'displayName': currentUser!.displayName,
+        'photoURL': currentUser!.photoURL,
+      };
+    } else {
+      return {};
+    }
   }
 }
