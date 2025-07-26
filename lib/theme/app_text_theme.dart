@@ -17,6 +17,9 @@ class AppTextTheme {
     bodyMedium: GoogleFonts.nunito(
       fontSize: 14,
     ),
+    headlineSmall: GoogleFonts.eduNswActFoundation(
+      fontSize: 12,
+    ),
     headlineMedium: GoogleFonts.eduNswActFoundation(
       fontWeight: FontWeight.normal
     ),
