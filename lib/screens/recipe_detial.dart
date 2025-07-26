@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/models/recipe.dart';
 import 'package:recipe_app/theme/app_text_theme.dart';
 import 'package:recipe_app/theme/color_theme.dart';
+import 'package:recipe_app/widgets/custom_scaffold.dart';
 import 'package:recipe_app/widgets/ingredients_list.dart';
 import 'package:recipe_app/widgets/instroctions_list.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -13,15 +14,15 @@ class RecipeDetialScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return CustomScaffold(
       appBar: AppBar(
         title: Text(recipedetail.name), 
         centerTitle: true,
-        titleTextStyle: AppTextTheme.textTheme.headlineLarge!.copyWith(
+        titleTextStyle: Theme.of(context).textTheme.headlineLarge!.copyWith(
           fontSize: 24,
         ),
       ),
-      body: SingleChildScrollView(
+      child: SingleChildScrollView(
         child: Column(
           children: [
             Hero(
