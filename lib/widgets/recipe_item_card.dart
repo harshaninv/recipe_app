@@ -18,7 +18,8 @@ class RecipeItemCard extends StatelessWidget {
     int totalCookTime = recipe.cookTimeMinutes + recipe.prepTimeMinutes;
 
     return Card(
-      margin: EdgeInsets.all(4),
+      color: Colors.transparent,
+      margin: EdgeInsets.all(8),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadiusGeometry.circular(8),
       ),
@@ -26,63 +27,66 @@ class RecipeItemCard extends StatelessWidget {
       elevation: 2,
       child: InkWell(
         onTap: onTapRecipe,
-        child: Stack(
-          children: [
-            Hero(
-              tag: recipe.id,
-              child: FadeInImage(
-                placeholder: MemoryImage(kTransparentImage),
-                image: NetworkImage(recipe.image),
-                fit: BoxFit.cover,
-                width: double.infinity,
-              ),
-            ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Container(
-                color: const Color.fromARGB(162, 80, 71, 75),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                margin: EdgeInsets.only(left: 80, bottom: 15),
-                child: Column(
-                  children: [
-                    Text(
-                      recipe.name,
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      softWrap: true,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        RecipeItemTrait(
-                          icon: Icons.timer,
-                          label: '$totalCookTime min',
-                        ),
-                        const SizedBox(height: 5),
-                        RecipeItemTrait(
-                          icon: Icons.mood_rounded,
-                          label: recipe.difficulty,
-                        ),
-                        const SizedBox(height: 5),
-                        RecipeItemTrait(
-                          icon: Icons.local_dining_outlined,
-                          label: '${recipe.servings}',
-                        ),
-                      ],
-                    ),
-                  ],
+        child: Container(
+          padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: ColorScheme.of(context).secondary.withAlpha(150),
+          ),
+          child: Stack(
+            children: [
+              Hero(
+                tag: recipe.id,
+                child: FadeInImage(
+                  placeholder: MemoryImage(kTransparentImage),
+                  image: NetworkImage(recipe.image),
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  height: 200,
                 ),
               ),
-            ),
-          ],
+              Positioned(
+                top: 0,
+                right: 0,
+                left: 0,
+                child: Container(
+                  color: const Color.fromARGB(166, 53, 5, 27),
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  child: Column(
+                    children: [
+                      Text(
+                        recipe.name,
+                        maxLines: 2,
+                        textAlign: TextAlign.center,
+                        softWrap: true,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                      const SizedBox(height: 10),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RecipeItemTrait(
+                            icon: Icons.timer,
+                            label: '$totalCookTime min',
+                          ),
+                          const SizedBox(height: 5),
+                          RecipeItemTrait(
+                            icon: Icons.mood_rounded,
+                            label: recipe.difficulty,
+                          ),
+                          const SizedBox(height: 5),
+                          RecipeItemTrait(
+                            icon: Icons.local_dining_outlined,
+                            label: '${recipe.servings}',
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
