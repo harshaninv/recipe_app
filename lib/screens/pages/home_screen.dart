@@ -46,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return CustomScaffold(
       appBar: AppBar(
+        backgroundColor: ColorScheme.of(context).primary,
         automaticallyImplyLeading: false,
         title: const Text('Food Recipes'),
         centerTitle: true,
@@ -61,18 +62,17 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      drawer: const Drawer(child: RecipeAppDrawer()),
+      drawer: const Drawer(
+        child: RecipeAppDrawer()
+      ),
       child: recipeProvider.isLoading
           ? const Align(
               alignment: Alignment.topCenter,
               child: LinearProgressIndicator(),
             )
           : Padding(
-              padding: const EdgeInsets.only(top: 4.0),
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
+              padding: const EdgeInsets.only(top: 4.0, bottom: 10),
+              child: ListView.builder(
                 itemCount: listOfRecipes.length,
                 itemBuilder: (context, index) {
                   return RecipeItemCard(
