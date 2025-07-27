@@ -38,7 +38,7 @@ class _SignupScreenState extends State<SignupScreen> {
         listen: false,
       ).signup(email, password);
       if (mounted) {
-        Navigator.pushReplacementNamed(context, '/home');
+        Navigator.pushReplacementNamed(context, '/tabs');
       }
     } catch (e) {
       if (mounted) {

@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
         listen: false,
       ).login(email, password);
       if (mounted) {
-        Navigator.pushReplacementNamed(context, '/home');
+        Navigator.pushReplacementNamed(context, '/tabs');
       }
     } catch (e) {
       if (mounted) {
