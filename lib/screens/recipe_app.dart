@@ -5,8 +5,9 @@ import 'package:recipe_app/providers/auth_provider.dart';
 import 'package:recipe_app/providers/recipe_provider.dart';
 import 'package:recipe_app/screens/auth/login_screen.dart';
 import 'package:recipe_app/screens/auth/signup_screen.dart';
-import 'package:recipe_app/screens/home_screen.dart';
+import 'package:recipe_app/screens/pages/home_screen.dart';
 import 'package:recipe_app/widgets/auth_wrapper.dart';
+import 'package:recipe_app/widgets/bottomTabBar/fab_tabs.dart';
 
 class RecipeApp extends StatelessWidget {
   const RecipeApp({super.key});
@@ -27,6 +28,7 @@ class RecipeApp extends StatelessWidget {
           '/login': (context) => LoginScreen(),
           '/signup': (context) => SignupScreen(),
           '/home': (context) => HomeScreen(),
+          '/tabs': (context) => FabTabs(),
         },
       ),
     );
