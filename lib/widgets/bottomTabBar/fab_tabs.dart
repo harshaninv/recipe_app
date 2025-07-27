@@ -26,7 +26,7 @@ class _FabTabsState extends State<FabTabs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 147, 18, 38),
+      extendBody: true,
       body: PageStorage(bucket: bucket, child: _pages[currentIndex]),
       floatingActionButton: FloatingActionButton(
         backgroundColor: ColorScheme.of(context).primary,

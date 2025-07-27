@@ -16,6 +16,7 @@ class RecipeDetialScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: Text(recipedetail.name), 
         centerTitle: true,
         titleTextStyle: Theme.of(context).textTheme.headlineLarge!.copyWith(

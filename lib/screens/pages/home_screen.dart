@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app/models/recipe.dart';
-import 'package:recipe_app/providers/auth_provider.dart';
 import 'package:recipe_app/providers/recipe_provider.dart';
 import 'package:recipe_app/screens/recipe_detial.dart';
 import 'package:recipe_app/widgets/app_drawer.dart';
